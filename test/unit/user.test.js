@@ -11,23 +11,14 @@ const title =
 Unit test on "user" model
 ===============================
 `
-// testing variables
 
+// testing variables
 let userTest = {
   username: 'I_am_a_test',
   password: 'incorrect'
 }
 
 describe(title, () => {
-  // before(function () {
-  //   return new Promise((resolve, reject) => {
-  //     models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0', {raw: true}).then(() => {
-  //       models.sequelize.sync({ force: true }).then(() => {
-  //         resolve()
-  //       })
-  //     })
-  //   })
-  // })
   before(() => {
     return models.sequelize.sync({ force: true })
   })

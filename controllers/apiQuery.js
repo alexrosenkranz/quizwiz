@@ -34,11 +34,15 @@ module.exports = {
     // first search if there is a vote
       db.vote.findOne({
         where: {
-          user_id: voteObj.user_id,
-          quiz_id: voteObj.quiz_id
+          userId: voteObj.userId,
+          quizId: voteObj.quizId
         }
       }).then((vote) => {
-        vote ? resolve(vote) : resolve(null)
+        if (vote) {
+          resolve({ error: true, msg: 'Sorry you already voted' })
+        } else {
+          return db.vote.create(voteObj)
+        }
       })
     })
   },
